@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>美森苗木｜500亩绿化苗圃库存直供</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="logo" href="#home" aria-label="回到首页">美森苗木</a>
+        <div class="nav-links">
+          <a href="#home">首页</a>
+          <a href="#stock">苗木库存</a>
+          <a href="#inquiry">在线询价</a>
+          <a href="#specs">规格说明</a>
+          <a href="#about">关于我们</a>
+          <a href="#contact">联系我们</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-content">
+          <p class="eyebrow">500亩绿化苗圃 · 家庭经营 · 库存直供</p>
+          <h1>美森苗木｜500亩绿化苗圃库存直供</h1>
+          <p>
+            面向园林工程、市政绿化、苗木采购客户，苗木种类清楚、规格明确、库存透明，欢迎电话咨询、实地看苗。
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#stock">查看苗木库存</a>
+            <a class="btn btn-secondary" href="#inquiry">提交询价</a>
+          </div>
+          <div class="hero-tags" aria-label="苗圃特点">
+            <span>500亩苗圃</span>
+            <span>规格清楚</span>
+            <span>数量透明</span>
+            <span>欢迎实地看苗</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section stock-section" id="stock">
+        <div class="section-heading">
+          <p class="eyebrow">Current Stock</p>
+          <h2>苗木库存</h2>
+          <p>
+            这里优先展示采购最关心的信息：树种、规格、数量。库存会随起苗和销售变化，采购前请电话确认。
+          </p>
+        </div>
+
+        <div class="stock-toolbar">
+          <label for="stock-search">按树种搜索</label>
+          <input id="stock-search" type="search" placeholder="例如：海棠、国槐、油松" />
+        </div>
+
+        <div class="stock-summary" id="stock-summary"></div>
+        <div class="stock-list" id="stock-list" aria-live="polite"></div>
+      </section>
+
+      <section class="section inquiry-section" id="inquiry">
+        <div class="section-heading">
+          <p class="eyebrow">Online Inquiry</p>
+          <h2>在线询价</h2>
+          <p>
+            如果有采购计划，可以先提交树种、规格和数量需求。我们看到后会根据库存情况联系您。
+          </p>
+        </div>
+
+        <form class="inquiry-form" id="inquiry-form">
+          <div class="form-grid">
+            <label>
+              树种名称
+              <input name="treeName" type="text" placeholder="例如：早樱、国槐、油松" required />
+            </label>
+            <label>
+              规格要求
+              <input name="spec" type="text" placeholder="例如：10-15cm / 高3.5m" required />
+            </label>
+            <label>
+              数量需求
+              <input name="quantity" type="text" placeholder="例如：300棵" required />
+            </label>
+            <label>
+              联系人
+              <input name="contactName" type="text" placeholder="请输入联系人" required />
+            </label>
+            <label>
+              手机号
+              <input name="phone" type="tel" placeholder="请输入手机号" required />
+            </label>
+            <label>
+              所在地区
+              <input name="region" type="text" placeholder="例如：山东潍坊 / 河北保定" />
+            </label>
+            <label class="full-field">
+              备注
+              <textarea name="remark" rows="4" placeholder="可以填写用苗时间、装车地点、是否需要看苗等"></textarea>
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">提交询价</button>
+            <a class="btn btn-light" href="./admin.html">查看后台记录</a>
+          </div>
+          <p class="form-message" id="form-message" role="status"></p>
+        </form>
+      </section>
+
+      <section class="section" id="specs">
+        <div class="section-heading">
+          <p class="eyebrow">Specification Notes</p>
+          <h2>规格说明</h2>
+          <p>不同树种的规格表达会有差异，以下说明方便先快速看懂库存表。</p>
+        </div>
+
+        <div class="info-grid">
+          <article>
+            <h3>cm 表示什么</h3>
+            <p>cm 一般表示胸径、地径等粗度规格，具体看树种和采购要求。</p>
+          </article>
+          <article>
+            <h3>m 表示什么</h3>
+            <p>m 一般表示高度，比如丛生树高度、油松高度等。</p>
+          </article>
+          <article>
+            <h3>分枝高度</h3>
+            <p>分枝高度指树干从地面到主要分枝位置的高度，常用于行道树和景观树。</p>
+          </article>
+          <article>
+            <h3>一级 / 二级</h3>
+            <p>一级、二级通常代表苗木等级或分级信息，采购前建议结合树形现场确认。</p>
+          </article>
+          <article>
+            <h3>现场确认</h3>
+            <p>库存数据用于快速沟通，最终规格、树形、数量以现场看苗和双方确认信息为准。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section photo-section" id="photos">
+        <div class="section-heading">
+          <p class="eyebrow">Photos</p>
+          <h2>苗木实拍 / 图片展示</h2>
+          <p>后续可继续补充不同树种的实拍图片，方便采购前先看苗木状态。</p>
+        </div>
+
+        <div class="photo-grid">
+          <article><span>苗木实拍后续更新</span></article>
+          <article><span>苗木实拍后续更新</span></article>
+          <article><span>苗木实拍后续更新</span></article>
+          <article><span>苗木实拍后续更新</span></article>
+          <article><span>苗木实拍后续更新</span></article>
+          <article><span>苗木实拍后续更新</span></article>
+        </div>
+      </section>
+
+      <section class="section about-section" id="about">
+        <div>
+          <p class="eyebrow">About Meisen</p>
+          <h2>关于美森苗木</h2>
+        </div>
+        <div class="about-card">
+          <p>
+            美森苗木是家庭经营的绿化苗圃，基地规模约 500 亩，长期供应多种工程绿化苗木。我们主要面向园林工程采购、市政绿化采购、苗木批发客户和园林公司。
+          </p>
+          <p>
+            采购时可以按树种、规格和数量沟通，也欢迎实地看苗。我们希望把库存信息说清楚，让客户先判断有没有合适的树，再进一步确认价格、起苗和装车安排。
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2>联系我们</h2>
+        <p><strong>苗圃名称：</strong>美森苗木</p>
+        <p>
+          <strong>联系电话：</strong>
+          <a class="phone-link" href="tel:15006662997">15006662997</a>
+        </p>
+        <p><strong>联系地址：</strong>潍坊市坊子区（详细地址可电话沟通）</p>
+        <p>欢迎电话咨询、实地看苗、按规格和数量沟通。</p>
+      </div>
+      <a class="btn btn-primary call-btn" href="tel:15006662997">立即咨询</a>
+    </footer>
+
+    <script src="./src/main.js"></script>
+  </body>
+</html>

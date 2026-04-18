@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>美森苗木｜询价后台</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="后台导航">
+        <a class="logo" href="./index.html#home">美森苗木后台</a>
+        <div class="nav-links">
+          <a href="./index.html#stock">返回库存</a>
+          <a href="./index.html#inquiry">前台询价</a>
+          <a href="./index.html#contact">联系方式</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="section admin-page">
+      <div class="section-heading">
+        <p class="eyebrow">Inquiry Admin</p>
+        <h1>询价记录</h1>
+        <p>
+          这里先用浏览器本地存储模拟后台记录。正式上线时，应改为从后端接口和数据库读取。
+        </p>
+      </div>
+
+      <div class="admin-actions">
+        <a class="btn btn-light" href="./index.html#inquiry">新增测试询价</a>
+        <button class="btn btn-danger" id="clear-inquiries" type="button">清空本地记录</button>
+      </div>
+
+      <div class="admin-summary" id="admin-summary"></div>
+      <div class="admin-table" id="admin-list" aria-live="polite"></div>
+    </main>
+
+    <script src="./src/main.js"></script>
+  </body>
+</html>
