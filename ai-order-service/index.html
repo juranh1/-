@@ -1,19 +1,692 @@
 <!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI 工具订阅代购服务</title>
-  <style>
-    :root{color-scheme:dark;--bg:#05070a;--text:#eaf7f4;--muted:rgba(234,247,244,.66);--line:rgba(139,255,232,.2);--cyan:#7fffe8;--lime:#d5ff6f;--gold:#ffc66d}*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;background:linear-gradient(rgba(92,255,221,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(92,255,221,.03) 1px,transparent 1px),linear-gradient(180deg,#05070a 0%,#091018 52%,#11100b 100%);background-size:56px 56px,56px 56px,auto;color:var(--text)}body:after{position:fixed;inset:0;z-index:-1;pointer-events:none;content:"";background:linear-gradient(130deg,rgba(26,255,198,.12),transparent 28%),linear-gradient(320deg,rgba(255,194,92,.1),transparent 32%),linear-gradient(180deg,transparent,rgba(0,0,0,.46))}a{color:inherit;text-decoration:none}.site-header{position:sticky;top:0;z-index:30;border-bottom:1px solid rgba(139,255,232,.16);background:rgba(5,8,12,.78);backdrop-filter:blur(18px)}.nav{display:flex;max-width:1180px;justify-content:space-between;align-items:center;gap:18px;margin:0 auto;padding:16px}.brand{display:inline-flex;gap:10px;align-items:center;font-weight:800}.brand:before{width:12px;height:12px;border:1px solid var(--cyan);box-shadow:0 0 18px rgba(127,255,232,.9);content:"";transform:rotate(45deg)}.nav-links{display:flex;gap:16px;color:rgba(234,247,244,.7);font-size:14px}.hero{position:relative;display:grid;min-height:calc(100vh - 66px);align-items:center;overflow:hidden;padding:32px 16px}.hero:before,.hero:after{position:absolute;inset:14% 8%;border:1px solid rgba(115,255,231,.16);content:"";pointer-events:none;transform:perspective(760px) rotateX(66deg) rotateZ(-13deg)}.hero:after{inset:20% 16%;border-color:rgba(255,203,117,.16);transform:perspective(760px) rotateX(67deg) rotateZ(17deg)}.hero-grid{position:relative;z-index:1;display:grid;width:100%;max-width:1160px;gap:28px;margin:0 auto}@media(min-width:900px){.hero-grid{grid-template-columns:1.08fr .92fr;align-items:center}}.badges{display:flex;flex-wrap:wrap;gap:10px}.badge,.status-pill{display:inline-flex;align-items:center;border:1px solid rgba(127,255,232,.24);border-radius:999px;background:rgba(8,22,26,.72);color:#9ffced;font-size:12px;font-weight:800;padding:7px 11px}.micro{display:inline-flex;align-items:center;gap:8px;color:var(--cyan);font-size:12px;font-weight:800}.micro:before{width:18px;height:1px;background:var(--cyan);box-shadow:0 0 12px rgba(127,255,232,.8);content:""}h1{max-width:760px;margin:18px 0;color:white;font-size:clamp(48px,9vw,86px);line-height:.95;letter-spacing:0}p{color:var(--muted);line-height:1.85}.actions{display:grid;gap:12px;margin-top:26px}@media(min-width:520px){.actions{grid-template-columns:180px 180px}}.btn{display:inline-flex;min-height:48px;justify-content:center;align-items:center;border-radius:6px;font-weight:900;padding:12px 18px;cursor:pointer}.btn-primary{border:1px solid rgba(142,255,231,.42);background:linear-gradient(90deg,rgba(21,255,211,.95),rgba(134,255,91,.82));color:#031112;box-shadow:0 0 30px rgba(74,255,219,.22)}.btn-secondary{border:1px solid rgba(139,255,232,.22);background:rgba(9,19,26,.78);color:var(--text)}.panel,.panel-strong{border:1px solid var(--line);border-radius:8px;background:linear-gradient(180deg,rgba(15,28,37,.88),rgba(6,11,16,.9));box-shadow:0 24px 70px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.06);backdrop-filter:blur(16px)}.panel-strong{border-color:rgba(127,255,232,.28);background:linear-gradient(145deg,rgba(10,42,48,.76),rgba(9,13,21,.93) 56%);box-shadow:0 28px 90px rgba(0,0,0,.42),0 0 54px rgba(37,255,219,.08)}.package{padding:22px}.price{color:var(--cyan);font-size:56px;font-weight:950;line-height:1}.data-row{display:flex;justify-content:space-between;gap:18px;border-top:1px solid rgba(139,255,232,.12);padding:13px 0}.data-row:first-child{border-top:0}.data-row dt{color:rgba(234,247,244,.52)}.data-row dd{margin:0;color:white;font-weight:900;text-align:right}.section{width:min(1120px,calc(100% - 32px));margin:0 auto;padding:24px 0 64px}.section h2{margin:8px 0 10px;color:white;font-size:clamp(30px,5vw,48px)}.notice{border:1px solid rgba(255,197,91,.32);border-radius:8px;background:rgba(54,38,13,.62);color:#ffe0a3;padding:14px 16px}.form-grid{display:grid;gap:15px}@media(min-width:720px){.form-grid{grid-template-columns:1fr 1fr}.span-2{grid-column:span 2}}label{display:grid;gap:8px;color:rgba(234,247,244,.82);font-size:14px;font-weight:800}input,textarea{min-height:48px;width:100%;border:1px solid rgba(139,255,232,.18);border-radius:6px;background:rgba(5,11,17,.72);color:#f2fffc;outline:none;padding:12px 13px}textarea{min-height:112px;resize:vertical}.error{display:none;border:1px solid rgba(255,111,111,.34);border-radius:8px;background:rgba(54,14,18,.72);color:#ffb7b7;padding:12px 14px}.success{display:none;border:1px solid rgba(107,255,209,.3);border-radius:8px;background:rgba(8,42,37,.64);color:#95ffe8;padding:14px}.cosmic-intro{position:fixed;inset:0;z-index:80;display:grid;place-items:center;overflow:hidden;background:#020408;transition:opacity 620ms ease,visibility 620ms ease}.cosmic-intro.done{visibility:hidden;opacity:0;pointer-events:none}#stars{position:absolute;inset:0;width:100%;height:100%}.intro-console{position:relative;z-index:2;width:min(560px,calc(100vw - 32px));padding:22px 8px;text-align:center;text-shadow:0 0 22px rgba(127,255,232,.45)}.intro-console h2{margin:14px 0 8px;color:white;font-size:clamp(30px,7vw,46px)}.progress{height:2px;overflow:hidden;border-radius:999px;background:rgba(127,255,232,.15)}.progress span{display:block;height:100%;width:100%;background:linear-gradient(90deg,transparent,#64ffdf,#d5ff6f);animation:progress 2.8s ease both;transform-origin:left}@keyframes progress{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-  </style>
-</head>
-<body>
-  <div class="cosmic-intro" id="intro"><canvas id="stars" aria-hidden="true"></canvas><div class="intro-console"><p class="micro" style="justify-content:center">ORDER GATEWAY</p><h2>星群正在汇聚</h2><p>正在进入 AI 工具订阅代购服务控制台</p><div class="progress"><span></span></div><button class="btn btn-secondary" id="skipIntro" style="margin-top:18px" type="button">跳过</button></div></div>
-  <header class="site-header"><nav class="nav"><a class="brand" href="#top">AI 工具订阅代购服务</a><div class="nav-links"><a href="#order">下单</a><a href="#track">查询</a><a href="#contact">联系</a></div></nav></header>
-  <main id="top"><section class="hero"><div class="hero-grid"><div><div class="badges"><span class="badge">固定 120 元</span><span class="badge">人工处理</span><span class="badge">公开前端版</span></div><p class="micro" style="margin-top:34px">AI SUBSCRIPTION ORDER NODE</p><h1>AI 工具订阅代购服务</h1><p>提交订单信息后，请添加客服微信完成付款与人工处理。本站为第三方服务页面，不是相关 AI 平台官方网站，也不代表官方。</p><div class="actions"><a class="btn btn-primary" href="#order">立即下单</a><a class="btn btn-secondary" href="#track">查询本机订单</a></div></div><aside class="panel-strong package"><p class="micro">CURRENT PACKAGE</p><div style="display:flex;justify-content:space-between;gap:18px;margin-top:18px"><div><h2 style="margin:0;color:white">AI 工具订阅代购</h2><p>提交订单后客服人工处理，当前公开静态版不接入真实支付接口。</p></div><div style="text-align:right"><div class="price">120</div><div style="color:rgba(255,255,255,.58);font-weight:800">CNY</div></div></div><dl><div class="data-row"><dt>订单状态</dt><dd>待付款 / 待处理</dd></div><div class="data-row"><dt>客服微信</dt><dd>13220747687</dd></div><div class="data-row"><dt>履约方式</dt><dd>人工联系上游渠道</dd></div></dl></aside></div></section><section class="section"><div class="notice">请勿提交密码、验证码、Cookie、2FA、恢复码等敏感信息。订单由人工处理，如无法完成将取消订单。</div></section><section class="section" id="order"><p class="micro">CREATE ORDER</p><h2>提交订单信息</h2><form class="panel-strong package" id="orderForm"><div class="error" id="errorBox"></div><div class="success" id="successBox"></div><div class="form-grid"><label>联系邮箱<input name="contactEmail" type="email" placeholder="name@example.com" required /></label><label>微信号或手机号<input name="contactMethod" placeholder="微信号或手机号" required /></label><label class="span-2">需要开通的平台账号邮箱或账号备注<textarea name="accountNote" placeholder="例如：需要开通的平台账号邮箱、平台名称、套餐周期等。不要填写密码或验证码。" required></textarea></label><label class="span-2">订单备注<textarea name="customerNote" placeholder="可选，补充你的需求。"></textarea></label></div><div class="actions"><button class="btn btn-primary" type="submit">提交订单</button><a class="btn btn-secondary" href="weixin://">添加微信客服</a></div></form></section><section class="section" id="track"><p class="micro">LOCAL TRACKING</p><h2>查询本机订单</h2><div class="panel package"><div class="form-grid"><label>订单号<input id="trackInput" placeholder="例如 AI20260602A1B2C3D4E5" /></label></div><div class="actions"><button class="btn btn-secondary" id="trackButton" type="button">查询</button></div><div class="success" id="trackResult"></div></div></section></main><footer class="section" id="contact"><div class="panel package"><p class="micro">CONTACT</p><h2>客服微信：13220747687</h2><p>提交订单后，请主动添加微信并发送订单号。公开静态版会把订单记录保存在当前浏览器本机，正式后台版需要部署 Next.js 服务端。</p></div></footer>
-  <script>
-    const sensitive=["password","密码","验证码","cookie","2fa","token","密钥","恢复码","secret","otp"];const ordersKey="ai-order-static-orders";function findSensitive(values){const text=values.join("\n").toLowerCase();return sensitive.filter((word)=>text.includes(word.toLowerCase()))}function orderNo(){const d=new Date();const date=`${d.getFullYear()}${String(d.getMonth()+1).padStart(2,"0")}${String(d.getDate()).padStart(2,"0")}`;const bytes=new Uint8Array(5);crypto.getRandomValues(bytes);return`AI${date}${Array.from(bytes,(b)=>b.toString(16).padStart(2,"0")).join("").toUpperCase()}`}function getOrders(){return JSON.parse(localStorage.getItem(ordersKey)||"[]")}function setOrders(orders){localStorage.setItem(ordersKey,JSON.stringify(orders))}document.getElementById("orderForm").addEventListener("submit",(event)=>{event.preventDefault();const form=new FormData(event.currentTarget);const payload={orderNo:orderNo(),contactEmail:String(form.get("contactEmail")||"").trim(),contactMethod:String(form.get("contactMethod")||"").trim(),accountNote:String(form.get("accountNote")||"").trim(),customerNote:String(form.get("customerNote")||"").trim(),amount:120,status:"待处理",createdAt:new Date().toISOString()};const found=findSensitive(Object.values(payload));const errorBox=document.getElementById("errorBox");const successBox=document.getElementById("successBox");errorBox.style.display="none";successBox.style.display="none";if(found.length){errorBox.textContent=`请删除敏感信息关键词后再提交：${found.join("、")}`;errorBox.style.display="block";return}const orders=getOrders();orders.unshift(payload);setOrders(orders);successBox.innerHTML=`订单已生成：<strong>${payload.orderNo}</strong><br>金额：120 元<br>状态：待处理<br>请添加微信 <strong>13220747687</strong> 并发送订单号。`;successBox.style.display="block";event.currentTarget.reset()});document.getElementById("trackButton").addEventListener("click",()=>{const no=document.getElementById("trackInput").value.trim();const order=getOrders().find((item)=>item.orderNo===no);const box=document.getElementById("trackResult");box.style.display="block";box.innerHTML=order?`订单号：<strong>${order.orderNo}</strong><br>金额：${order.amount} 元<br>状态：${order.status}<br>创建时间：${new Date(order.createdAt).toLocaleString("zh-CN")}<br>备注：${order.customerNote||"无"}`:"未找到该订单。公开静态版只能查询当前浏览器提交过的订单。"});const intro=document.getElementById("intro");document.getElementById("skipIntro").addEventListener("click",()=>intro.classList.add("done"));setTimeout(()=>intro.classList.add("done"),3200);const canvas=document.getElementById("stars");const ctx=canvas.getContext("2d");let stars=[];function resize(){const ratio=window.devicePixelRatio||1;const w=window.innerWidth;const h=window.innerHeight;canvas.width=w*ratio;canvas.height=h*ratio;canvas.style.width=`${w}px`;canvas.style.height=`${h}px`;ctx.setTransform(ratio,0,0,ratio,0,0);stars=Array.from({length:w<720?170:280},(_,i)=>{const angle=Math.random()*Math.PI*2;const radius=Math.max(w,h)*(.25+Math.random()*.72);const targetAngle=i*.18+Math.random()*.85;const targetRadius=18+Math.random()*150;return{x:w/2+Math.cos(angle)*radius,y:h/2+Math.sin(angle)*radius,tx:w/2+Math.cos(targetAngle)*targetRadius,ty:h/2+Math.sin(targetAngle)*targetRadius*.56,hue:i%3===0?170:i%3===1?83:42,size:1+Math.random()*2.2}})}function ease(t){return 1-Math.pow(1-t,3)}const start=performance.now();function draw(now){const w=window.innerWidth;const h=window.innerHeight;const progress=Math.min((now-start)/2500,1);const eased=ease(progress);const pulse=Math.sin(now/180)*.5+.5;ctx.fillStyle="#020408";ctx.fillRect(0,0,w,h);ctx.save();ctx.translate(w/2,h/2);ctx.strokeStyle=`rgba(110,255,232,${.08+pulse*.08})`;for(let ring=0;ring<5;ring+=1){ctx.beginPath();ctx.ellipse(0,0,70+ring*82,26+ring*31,-.22,0,Math.PI*2);ctx.stroke()}ctx.restore();for(const star of stars){const x=star.x+(star.tx-star.x)*eased;const y=star.y+(star.ty-star.y)*eased;const angle=Math.atan2(y-h/2,x-w/2);const streak=10+58*progress;ctx.beginPath();ctx.strokeStyle=`hsla(${star.hue},95%,74%,${.16+progress*.26})`;ctx.lineWidth=Math.max(.7,star.size*.42);ctx.moveTo(x,y);ctx.lineTo(x-Math.cos(angle)*streak,y-Math.sin(angle)*streak);ctx.stroke();ctx.beginPath();ctx.fillStyle=`hsla(${star.hue},95%,78%,${.58+pulse*.28})`;ctx.arc(x,y,star.size,0,Math.PI*2);ctx.fill()}if(!intro.classList.contains("done"))requestAnimationFrame(draw)}resize();window.addEventListener("resize",resize);requestAnimationFrame(draw);
-  </script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI 工具订阅代购服务</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #05070a;
+        --text: #eaf7f4;
+        --muted: rgba(234, 247, 244, 0.66);
+        --line: rgba(139, 255, 232, 0.2);
+        --cyan: #7fffe8;
+        --lime: #d5ff6f;
+        --gold: #ffc66d;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", "Microsoft YaHei", sans-serif;
+        background:
+          linear-gradient(rgba(92, 255, 221, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(92, 255, 221, 0.03) 1px, transparent 1px),
+          linear-gradient(180deg, #05070a 0%, #091018 52%, #11100b 100%);
+        background-size: 56px 56px, 56px 56px, auto;
+        color: var(--text);
+      }
+      body::after {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        content: "";
+        background:
+          linear-gradient(130deg, rgba(26, 255, 198, 0.12), transparent 28%),
+          linear-gradient(320deg, rgba(255, 194, 92, 0.1), transparent 32%),
+          linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.46));
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        border-bottom: 1px solid rgba(139, 255, 232, 0.16);
+        background: rgba(5, 8, 12, 0.78);
+        backdrop-filter: blur(18px);
+      }
+      .nav {
+        display: flex;
+        max-width: 1180px;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+        margin: 0 auto;
+        padding: 16px;
+      }
+      .brand {
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
+        font-weight: 800;
+      }
+      .brand::before {
+        width: 12px;
+        height: 12px;
+        border: 1px solid var(--cyan);
+        box-shadow: 0 0 18px rgba(127, 255, 232, 0.9);
+        content: "";
+        transform: rotate(45deg);
+      }
+      .nav-links {
+        display: flex;
+        gap: 16px;
+        color: rgba(234, 247, 244, 0.7);
+        font-size: 14px;
+      }
+      .hero {
+        position: relative;
+        display: grid;
+        min-height: calc(100vh - 66px);
+        align-items: center;
+        overflow: hidden;
+        padding: 32px 16px;
+      }
+      .hero::before,
+      .hero::after {
+        position: absolute;
+        inset: 14% 8%;
+        border: 1px solid rgba(115, 255, 231, 0.16);
+        content: "";
+        pointer-events: none;
+        transform: perspective(760px) rotateX(66deg) rotateZ(-13deg);
+      }
+      .hero::after {
+        inset: 20% 16%;
+        border-color: rgba(255, 203, 117, 0.16);
+        transform: perspective(760px) rotateX(67deg) rotateZ(17deg);
+      }
+      .hero-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        width: 100%;
+        max-width: 1160px;
+        gap: 28px;
+        margin: 0 auto;
+      }
+      @media (min-width: 900px) {
+        .hero-grid {
+          grid-template-columns: 1.08fr 0.92fr;
+          align-items: center;
+        }
+      }
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .badge,
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid rgba(127, 255, 232, 0.24);
+        border-radius: 999px;
+        background: rgba(8, 22, 26, 0.72);
+        color: #9ffced;
+        font-size: 12px;
+        font-weight: 800;
+        padding: 7px 11px;
+      }
+      .micro {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--cyan);
+        font-size: 12px;
+        font-weight: 800;
+      }
+      .micro::before {
+        width: 18px;
+        height: 1px;
+        background: var(--cyan);
+        box-shadow: 0 0 12px rgba(127, 255, 232, 0.8);
+        content: "";
+      }
+      h1 {
+        max-width: 760px;
+        margin: 18px 0;
+        color: white;
+        font-size: clamp(48px, 9vw, 86px);
+        line-height: 0.95;
+        letter-spacing: 0;
+      }
+      p {
+        color: var(--muted);
+        line-height: 1.85;
+      }
+      .actions {
+        display: grid;
+        gap: 12px;
+        margin-top: 26px;
+      }
+      @media (min-width: 520px) {
+        .actions {
+          grid-template-columns: 180px 180px;
+        }
+      }
+      .btn {
+        display: inline-flex;
+        min-height: 48px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 6px;
+        font-weight: 900;
+        padding: 12px 18px;
+        cursor: pointer;
+      }
+      .btn-primary {
+        border: 1px solid rgba(142, 255, 231, 0.42);
+        background: linear-gradient(90deg, rgba(21, 255, 211, 0.95), rgba(134, 255, 91, 0.82));
+        color: #031112;
+        box-shadow: 0 0 30px rgba(74, 255, 219, 0.22);
+      }
+      .btn-secondary {
+        border: 1px solid rgba(139, 255, 232, 0.22);
+        background: rgba(9, 19, 26, 0.78);
+        color: var(--text);
+      }
+      .panel,
+      .panel-strong {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: linear-gradient(180deg, rgba(15, 28, 37, 0.88), rgba(6, 11, 16, 0.9));
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(16px);
+      }
+      .panel-strong {
+        border-color: rgba(127, 255, 232, 0.28);
+        background: linear-gradient(145deg, rgba(10, 42, 48, 0.76), rgba(9, 13, 21, 0.93) 56%);
+        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.42), 0 0 54px rgba(37, 255, 219, 0.08);
+      }
+      .package {
+        padding: 22px;
+      }
+      .price {
+        color: var(--cyan);
+        font-size: 56px;
+        font-weight: 950;
+        line-height: 1;
+      }
+      .data-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        border-top: 1px solid rgba(139, 255, 232, 0.12);
+        padding: 13px 0;
+      }
+      .data-row:first-child {
+        border-top: 0;
+      }
+      .data-row dt {
+        color: rgba(234, 247, 244, 0.52);
+      }
+      .data-row dd {
+        margin: 0;
+        color: white;
+        font-weight: 900;
+        text-align: right;
+      }
+      .section {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 64px;
+      }
+      .section h2 {
+        margin: 8px 0 10px;
+        color: white;
+        font-size: clamp(30px, 5vw, 48px);
+      }
+      .notice {
+        border: 1px solid rgba(255, 197, 91, 0.32);
+        border-radius: 8px;
+        background: rgba(54, 38, 13, 0.62);
+        color: #ffe0a3;
+        padding: 14px 16px;
+      }
+      .form-grid {
+        display: grid;
+        gap: 15px;
+      }
+      @media (min-width: 720px) {
+        .form-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .span-2 {
+          grid-column: span 2;
+        }
+      }
+      label {
+        display: grid;
+        gap: 8px;
+        color: rgba(234, 247, 244, 0.82);
+        font-size: 14px;
+        font-weight: 800;
+      }
+      input,
+      textarea {
+        min-height: 48px;
+        width: 100%;
+        border: 1px solid rgba(139, 255, 232, 0.18);
+        border-radius: 6px;
+        background: rgba(5, 11, 17, 0.72);
+        color: #f2fffc;
+        outline: none;
+        padding: 12px 13px;
+      }
+      textarea {
+        min-height: 112px;
+        resize: vertical;
+      }
+      .error {
+        display: none;
+        border: 1px solid rgba(255, 111, 111, 0.34);
+        border-radius: 8px;
+        background: rgba(54, 14, 18, 0.72);
+        color: #ffb7b7;
+        padding: 12px 14px;
+      }
+      .success {
+        display: none;
+        border: 1px solid rgba(107, 255, 209, 0.3);
+        border-radius: 8px;
+        background: rgba(8, 42, 37, 0.64);
+        color: #95ffe8;
+        padding: 14px;
+      }
+      .cosmic-intro {
+        position: fixed;
+        inset: 0;
+        z-index: 80;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background: #020408;
+        transition: opacity 620ms ease, visibility 620ms ease;
+      }
+      .cosmic-intro.done {
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+      }
+      #stars {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .intro-console {
+        position: relative;
+        z-index: 2;
+        width: min(560px, calc(100vw - 32px));
+        padding: 22px 8px;
+        text-align: center;
+        text-shadow: 0 0 22px rgba(127, 255, 232, 0.45);
+      }
+      .intro-console h2 {
+        margin: 14px 0 8px;
+        color: white;
+        font-size: clamp(30px, 7vw, 46px);
+      }
+      .progress {
+        height: 2px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(127, 255, 232, 0.15);
+      }
+      .progress span {
+        display: block;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(90deg, transparent, #64ffdf, #d5ff6f);
+        animation: progress 2.8s ease both;
+        transform-origin: left;
+      }
+      @keyframes progress {
+        from { transform: scaleX(0); }
+        to { transform: scaleX(1); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cosmic-intro" id="intro">
+      <canvas id="stars" aria-hidden="true"></canvas>
+      <div class="intro-console">
+        <p class="micro" style="justify-content:center">ORDER GATEWAY</p>
+        <h2>粒子正在塌缩</h2>
+        <p>移动手指或鼠标牵引星场，随后汇聚成一个入口</p>
+        <div class="progress"><span></span></div>
+        <button class="btn btn-secondary" id="skipIntro" style="margin-top:18px">跳过</button>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <nav class="nav">
+        <a class="brand" href="#top">AI 工具订阅代购服务</a>
+        <div class="nav-links">
+          <a href="#order">下单</a>
+          <a href="#track">查询</a>
+          <a href="#contact">联系</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="badges">
+              <span class="badge">固定 120 元</span>
+              <span class="badge">人工处理</span>
+              <span class="badge">公开前端版</span>
+            </div>
+            <p class="micro" style="margin-top:34px">AI SUBSCRIPTION ORDER NODE</p>
+            <h1>AI 工具订阅代购服务</h1>
+            <p>
+              提交订单信息后，请添加客服微信完成付款与人工处理。本站为第三方服务页面，不是相关 AI 平台官方网站，也不代表官方。
+            </p>
+            <div class="actions">
+              <a class="btn btn-primary" href="#order">立即下单</a>
+              <a class="btn btn-secondary" href="#track">查询本机订单</a>
+            </div>
+          </div>
+
+          <aside class="panel-strong package">
+            <p class="micro">CURRENT PACKAGE</p>
+            <div style="display:flex;justify-content:space-between;gap:18px;margin-top:18px">
+              <div>
+                <h2 style="margin:0;color:white">AI 工具订阅代购</h2>
+                <p>提交订单后客服人工处理，当前公开静态版不接入真实支付接口。</p>
+              </div>
+              <div style="text-align:right">
+                <div class="price">120</div>
+                <div style="color:rgba(255,255,255,.58);font-weight:800">CNY</div>
+              </div>
+            </div>
+            <dl>
+              <div class="data-row"><dt>订单状态</dt><dd>待付款 / 待处理</dd></div>
+              <div class="data-row"><dt>客服微信</dt><dd>13220747687</dd></div>
+              <div class="data-row"><dt>履约方式</dt><dd>人工联系上游渠道</dd></div>
+            </dl>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="notice">
+          请勿提交密码、验证码、Cookie、2FA、恢复码等敏感信息。订单由人工处理，如无法完成将取消订单。
+        </div>
+      </section>
+
+      <section class="section" id="order">
+        <p class="micro">CREATE ORDER</p>
+        <h2>提交订单信息</h2>
+        <form class="panel-strong package" id="orderForm">
+          <div class="error" id="errorBox"></div>
+          <div class="success" id="successBox"></div>
+          <div class="form-grid">
+            <label>
+              联系邮箱
+              <input name="contactEmail" type="email" placeholder="name@example.com" required />
+            </label>
+            <label>
+              微信号或手机号
+              <input name="contactMethod" placeholder="微信号或手机号" required />
+            </label>
+            <label class="span-2">
+              需要开通的平台账号邮箱或账号备注
+              <textarea name="accountNote" placeholder="例如：需要开通的平台账号邮箱、平台名称、套餐周期等。不要填写密码或验证码。" required></textarea>
+            </label>
+            <label class="span-2">
+              订单备注
+              <textarea name="customerNote" placeholder="可选，补充你的需求。"></textarea>
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn btn-primary" type="submit">提交订单</button>
+            <a class="btn btn-secondary" href="weixin://">添加微信客服</a>
+          </div>
+        </form>
+      </section>
+
+      <section class="section" id="track">
+        <p class="micro">LOCAL TRACKING</p>
+        <h2>查询本机订单</h2>
+        <div class="panel package">
+          <div class="form-grid">
+            <label>
+              订单号
+              <input id="trackInput" placeholder="例如 AI20260602A1B2C3D4E5" />
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn btn-secondary" id="trackButton" type="button">查询</button>
+          </div>
+          <div class="success" id="trackResult"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="section" id="contact">
+      <div class="panel package">
+        <p class="micro">CONTACT</p>
+        <h2>客服微信：13220747687</h2>
+        <p>提交订单后，请主动添加微信并发送订单号。公开静态版会把订单记录保存在当前浏览器本机，正式后台版需要部署 Next.js 服务端。</p>
+      </div>
+    </footer>
+
+    <script>
+      const sensitive = ["password", "密码", "验证码", "cookie", "2fa", "token", "密钥", "恢复码", "secret", "otp"];
+      const ordersKey = "ai-order-static-orders";
+
+      function findSensitive(values) {
+        const text = values.join("\n").toLowerCase();
+        return sensitive.filter((word) => text.includes(word.toLowerCase()));
+      }
+      function orderNo() {
+        const d = new Date();
+        const date = `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, "0")}${String(d.getDate()).padStart(2, "0")}`;
+        const bytes = new Uint8Array(5);
+        crypto.getRandomValues(bytes);
+        return `AI${date}${Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("").toUpperCase()}`;
+      }
+      function getOrders() {
+        return JSON.parse(localStorage.getItem(ordersKey) || "[]");
+      }
+      function setOrders(orders) {
+        localStorage.setItem(ordersKey, JSON.stringify(orders));
+      }
+
+      document.getElementById("orderForm").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const form = new FormData(event.currentTarget);
+        const payload = {
+          orderNo: orderNo(),
+          contactEmail: String(form.get("contactEmail") || "").trim(),
+          contactMethod: String(form.get("contactMethod") || "").trim(),
+          accountNote: String(form.get("accountNote") || "").trim(),
+          customerNote: String(form.get("customerNote") || "").trim(),
+          amount: 120,
+          status: "待处理",
+          createdAt: new Date().toISOString()
+        };
+        const found = findSensitive(Object.values(payload));
+        const errorBox = document.getElementById("errorBox");
+        const successBox = document.getElementById("successBox");
+        errorBox.style.display = "none";
+        successBox.style.display = "none";
+        if (found.length) {
+          errorBox.textContent = `请删除敏感信息关键词后再提交：${found.join("、")}`;
+          errorBox.style.display = "block";
+          return;
+        }
+        const orders = getOrders();
+        orders.unshift(payload);
+        setOrders(orders);
+        successBox.innerHTML = `订单已生成：<strong>${payload.orderNo}</strong><br>金额：120 元<br>状态：待处理<br>请添加微信 <strong>13220747687</strong> 并发送订单号。`;
+        successBox.style.display = "block";
+        event.currentTarget.reset();
+      });
+
+      document.getElementById("trackButton").addEventListener("click", () => {
+        const no = document.getElementById("trackInput").value.trim();
+        const order = getOrders().find((item) => item.orderNo === no);
+        const box = document.getElementById("trackResult");
+        box.style.display = "block";
+        box.innerHTML = order
+          ? `订单号：<strong>${order.orderNo}</strong><br>金额：${order.amount} 元<br>状态：${order.status}<br>创建时间：${new Date(order.createdAt).toLocaleString("zh-CN")}<br>备注：${order.customerNote || "无"}`
+          : "未找到该订单。公开静态版只能查询当前浏览器提交过的订单。";
+      });
+
+      const intro = document.getElementById("intro");
+      document.getElementById("skipIntro").addEventListener("click", () => intro.classList.add("done"));
+
+      const canvas = document.getElementById("stars");
+      const ctx = canvas.getContext("2d");
+      const pointer = {
+        active: false,
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2
+      };
+      let stars = [];
+
+      function easeOut(t) {
+        return 1 - Math.pow(1 - t, 3);
+      }
+      function easeInOut(t) {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      }
+      function resize() {
+        const ratio = window.devicePixelRatio || 1;
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        canvas.width = w * ratio;
+        canvas.height = h * ratio;
+        canvas.style.width = `${w}px`;
+        canvas.style.height = `${h}px`;
+        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+        stars = Array.from({ length: w < 720 ? 240 : 430 }, (_, i) => {
+          const sx = Math.random() * w;
+          const sy = Math.random() * h;
+          return {
+            seed: Math.random() * 1000 + i,
+            sx,
+            sy,
+            hue: i % 3 === 0 ? 170 : i % 3 === 1 ? 83 : 42,
+            size: 0.8 + Math.random() * 2.4
+          };
+        });
+      }
+      function updatePointer(event) {
+        pointer.active = true;
+        const point = event.touches ? event.touches[0] : event;
+        if (!point) return;
+        pointer.x = point.clientX;
+        pointer.y = point.clientY;
+      }
+      window.addEventListener("mousemove", updatePointer);
+      window.addEventListener("touchmove", updatePointer, { passive: true });
+
+      const start = performance.now();
+      function draw(now) {
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        const centerX = w / 2;
+        const centerY = h / 2;
+        const elapsed = now - start;
+        const gesture = Math.min(elapsed / 1150, 1);
+        const collapse = Math.min(Math.max((elapsed - 1050) / 1850, 0), 1);
+        const easedCollapse = easeInOut(collapse);
+        const flash = Math.min(Math.max((elapsed - 2840) / 560, 0), 1);
+        const pulse = Math.sin(now / 180) * 0.5 + 0.5;
+        const handX = pointer.active ? pointer.x : centerX + Math.cos(now / 520) * w * 0.14;
+        const handY = pointer.active ? pointer.y : centerY + Math.sin(now / 610) * h * 0.12;
+
+        ctx.fillStyle = "#020408";
+        ctx.fillRect(0, 0, w, h);
+
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        ctx.strokeStyle = `rgba(110, 255, 232, ${0.06 + pulse * 0.06 + flash * 0.24})`;
+        for (let ring = 0; ring < 4; ring += 1) {
+          ctx.beginPath();
+          ctx.ellipse(0, 0, 70 + ring * 82, 26 + ring * 31, -0.22, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+        ctx.restore();
+
+        for (const star of stars) {
+          const driftX = Math.cos(now / 520 + star.seed) * 12;
+          const driftY = Math.sin(now / 650 + star.seed) * 12;
+          const baseX = star.sx + driftX * (1 - collapse);
+          const baseY = star.sy + driftY * (1 - collapse);
+          const toHandX = handX - baseX;
+          const toHandY = handY - baseY;
+          const handDistance = Math.hypot(toHandX, toHandY) || 1;
+          const handRange = Math.max(w, h) * 0.34;
+          const handForce = Math.max(0, 1 - handDistance / handRange) * 150 * gesture * (1 - collapse);
+          const spin = Math.sin(now / 280 + star.seed) * 0.55 + 0.45;
+          const handPullX = (toHandX / handDistance) * handForce + (-toHandY / handDistance) * handForce * 0.42 * spin;
+          const handPullY = (toHandY / handDistance) * handForce + (toHandX / handDistance) * handForce * 0.42 * spin;
+          const attractX = centerX + Math.cos(star.seed * 3.1) * (1 - easedCollapse) * 6;
+          const attractY = centerY + Math.sin(star.seed * 2.7) * (1 - easedCollapse) * 6;
+          const preCollapseX = baseX + handPullX;
+          const preCollapseY = baseY + handPullY;
+          const x = preCollapseX + (attractX - preCollapseX) * easedCollapse;
+          const y = preCollapseY + (attractY - preCollapseY) * easedCollapse;
+          const angle = Math.atan2(y - centerY, x - centerX);
+          const streak = 8 + 88 * collapse;
+          ctx.beginPath();
+          ctx.strokeStyle = `hsla(${star.hue}, 95%, 74%, ${0.1 + gesture * 0.18 + collapse * 0.34})`;
+          ctx.lineWidth = Math.max(0.65, star.size * (0.36 + collapse * 0.22));
+          ctx.moveTo(x, y);
+          ctx.lineTo(x - Math.cos(angle) * streak, y - Math.sin(angle) * streak);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.fillStyle = `hsla(${star.hue}, 95%, 78%, ${0.52 + pulse * 0.24 + collapse * 0.2})`;
+          ctx.arc(x, y, star.size * (1 + collapse * 0.5), 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        const coreSize = 10 + collapse * 50 + pulse * 5 + flash * Math.max(w, h) * 0.55;
+        const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, coreSize * 3.2);
+        gradient.addColorStop(0, "rgba(220, 255, 244, 0.92)");
+        gradient.addColorStop(0.2, `rgba(83, 255, 225, ${0.22 + collapse * 0.26})`);
+        gradient.addColorStop(0.62, `rgba(255, 194, 92, ${0.08 + flash * 0.12})`);
+        gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(0, 0, coreSize * 3.2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+
+        ctx.save();
+        ctx.strokeStyle = `rgba(127, 255, 232, ${0.18 * (1 - collapse)})`;
+        ctx.beginPath();
+        ctx.arc(handX, handY, 34 + pulse * 12, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+
+        if (elapsed > 3520) {
+          intro.classList.add("done");
+        } else {
+          requestAnimationFrame(draw);
+        }
+      }
+      resize();
+      window.addEventListener("resize", resize);
+      requestAnimationFrame(draw);
+    </script>
+  </body>
 </html>
